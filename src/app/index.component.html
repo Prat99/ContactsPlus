@@ -1,0 +1,75 @@
+<div class='row'>
+   <div class='large-6 columns'>
+    <a routerLink='/addbusiness'><button class='button primary'>Add Business</button></a>    
+   </div>
+   <div class='large-6 columns'>
+     <label>Filter category
+        <select (change)="filterCategory($event.target.value)" #filteredCategory>
+          <option value="0">Select</option>
+          <option value={{category.category}} *ngFor='let category of categories; let i = index'>{{category.category}}</option>
+        </select>
+     </label>
+   </div>
+ </div>
+
+ <div *ngIf = "appState == 'extend'"> 
+        <div class='row'>
+           <div class='large-3 columns'>
+              <button class='button alert'(click)="changeState('default')">go back</button>
+           </div>
+        </div> 
+      <div class='row'>
+                  <div *ngFor='let business of businesses'>
+                    <div *ngIf = 'activeKey == business.$key'>
+                      <div class='large-6 columns'>
+                        <h3>{{business.company}}</h3>
+                          <ul>
+                            <li>{{business.description}}</li>
+                            <li>{{business.category}}</li>
+                            <li>{{business.street_address}}</li>
+                          </ul>
+                      </div>
+                      <div class='large-6 columns'>
+                          <h3>Contacts</h3>
+                           <ul>
+                             <li>{{business.years_in_business}}</li>
+                             <li>{{business.city}}</li>
+                             <li>{{business.state}}</li>
+                             <li>{{business.zipcode}}</li> 
+                             <li>{{business.phone}}</li>
+                             <li>{{business.email}}</li>
+                           </ul>
+                      </div>
+                    </div>  
+                  </div>  
+   </div>
+</div>
+
+
+<div class='row'>
+  <div class='large-12 columns'>
+    <div *ngIf ='businesses'>
+      <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Category</th>
+          <th>Phone</th>
+        </tr>  
+      </thead>  
+      <tbody>
+        <tr  *ngFor='let business of  businesses'>
+          <td>{{business.company}}</td>
+          <td>{{business.category}}</td>
+          <td>{{business.phone}}</td>
+          <td>
+            <button  (click)="changeState('extend', business.$key)" class='button success'>More</button>
+            <button class='button warning'>Edit</button>
+            <button class='button alert'>delete</button>  
+          </td>  
+        </tr>  
+      </tbody>  
+    </table> 
+    </div>   
+  </div>
+</div>  
