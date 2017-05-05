@@ -136,7 +136,7 @@
 
             <button (click)="editState('edited', business)" class='button warning' >Edit</button>
 
-            <button class='button alert'>delete</button>  
+            <button (click)="deleteBusiness(business.$key)" class='button alert'>delete</button>  
           </td>  
         </tr>  
       </tbody>  

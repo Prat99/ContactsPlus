@@ -65,17 +65,18 @@ export class IndexComponent implements OnInit {
 
      editState(state, business)
      {
-        this.appState = state;
-        this.activeCompany = business.company,
-        this.activeCategory = business.category,
-        this.activeYears_in_business = business.years_in_business,
-        this.activeDescription = business.description,
-        this.activePhone = business.phone,
-        this.activeEmail = business.email,
-        this.activeStreet_address =  business.street_address,
-        this.activeCity = business.city,
-        this.activeState = business.state,
+        this.appState = state
+        this.activeCompany = business.company
+        this.activeCategory = business.category
+        this.activeYears_in_business = business.years_in_business
+        this.activeDescription = business.description
+        this.activePhone = business.phone
+        this.activeEmail = business.email
+        this.activeStreet_address =  business.street_address
+        this.activeCity = business.city
+        this.activeState = business.state
         this.activeZipcode =  business.zipcode
+        this.activeKey = business.$key
 
         console.log(this.appState);
     }
@@ -84,19 +85,25 @@ export class IndexComponent implements OnInit {
     )
     {
         var upd_business = {
-                                    company: this.activeCompany,
-                                    category: this.activeCategory,
-                                    years_in_business:this.activeYears_in_business,
-                                    description:this.activeDescription,
-                                    phone:this.activePhone,
-                                    email:this.activeEmail,
-                                    street_address: this.activeStreet_address,
-                                    city: this.activeCity,
-                                    state: this.activeState,
-                                    zipcode:this.activeZipcode};
+                              company: this.activeCompany,
+                              category: this.activeCategory,
+                              years_in_business:this.activeYears_in_business,
+                              description:this.activeDescription,
+                              phone:this.activePhone,
+                              email:this.activeEmail,
+                              street_address: this.activeStreet_address,
+                              city: this.activeCity,
+                              state: this.activeState,
+                              zipcode:this.activeZipcode
+                            };
 
       this.fs.upBusiness(this.activeKey, upd_business);
-     this.changeState('default', this.activeKey);
+      this.changeState('default', this.activeKey);
     }
+    
+       deleteBusiness(key)
+       {
+         this.fs.delBusiness(key);
+       }
 
 }

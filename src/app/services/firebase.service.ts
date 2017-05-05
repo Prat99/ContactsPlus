@@ -45,4 +45,9 @@ export class FirebaseService {
         {
            return this.business.update(key, created_business);
         }
+
+        delBusiness(key)
+        {
+          this.business.remove(key);
+        }
 }
