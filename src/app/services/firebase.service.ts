@@ -40,4 +40,9 @@ export class FirebaseService {
         {
            return this.business.push(created_business);
         }
+
+        upBusiness(key ,created_business)
+        {
+           return this.business.update(key, created_business);
+        }
 }
